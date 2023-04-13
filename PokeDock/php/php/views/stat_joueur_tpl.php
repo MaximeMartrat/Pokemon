@@ -11,8 +11,15 @@ if($params['2'] == 1) {
 ?>
 
 <style>
+    body{
+        background-color: #3A5DAF;
+    }
     h1{
-    text-align: center;
+        grid-row: 2;
+        grid-column:2;
+        text-align: center;
+        text-shadow: 2px 5px 3px #1A2D5F; 
+        color: #C0BB05;
     }
     #combat_container{
         height: 90vh;
@@ -23,8 +30,8 @@ if($params['2'] == 1) {
     }
     table {
         border-radius: 10px;
-        border: 2px solid black;
-        background-color: black;
+        border: 2px solid #3A5DAF;
+        background-color: #3A5DAF;
         overflow: hidden;
         border-collapse: collapse;
         font-size: 20px;
@@ -32,7 +39,7 @@ if($params['2'] == 1) {
     }
     th, td{
         background-color: white;
-        border: 1px solid black;
+        border: 1px solid #3A5DAF;
         height: 30px;
         width: 200px;
     }
@@ -72,7 +79,7 @@ $totalScoreJ2 = 0;
     <?php if(isset($_SESSION['joueur2'])): ?>
         <h1><?= $_SESSION['joueur2'] ?></h1>
     <?php else: ?>
-        <h1>Ordi</h1>
+        <h1>Bot</h1>
     <?php endif; ?>
 <?php endif; ?>
     <table>
@@ -135,7 +142,7 @@ $totalScoreJ2 = 0;
             <!-- si session random affichage du bouton des stats de l'ordi -->
             <?php elseif(isset($_SESSION['random'])): ?>
                 <form action="/Combat/displayCombatsById/99" method="POST">
-                    <button class="button_display_combat" type="submit">Stats Ordi</button>
+                    <button class="button_display_combat" type="submit">Stats Bot</button>
                 </form>
             <?php endif; ?>
     </div>

@@ -10,6 +10,7 @@ include('header_tpl.php');
         width: 98vw;
         background-image: url('views/assets/images/Pokémon-simbolo.jpg');
         background-size: cover;
+        overflow: hidden;
     }
     #loggin_container{
         height: 90vh;
@@ -32,6 +33,7 @@ include('header_tpl.php');
         border: 2px solid #ED1C24;
         border-radius: 5px;
         text-decoration: none;
+        box-shadow: 5px 5px 8px #1A2D5F;
     }#select_play button:hover{
         background-color: #ED1C24;
         color: #FFCB05;
@@ -42,8 +44,8 @@ include('header_tpl.php');
         display: none;
         width: 220px;
         height: 220px;
-        border: 3px solid #1F3871;
-        background-color: #3A5DAF;
+        border: 3px solid red;
+        background: linear-gradient(to bottom, red 50%, white 50%);
         box-shadow: 2px 10px 10px #23386B;
         border-radius: 100%;
         text-align: center;
@@ -54,8 +56,8 @@ include('header_tpl.php');
         display: none;
         width: 220px;
         height: 220px;
-        border: 3px solid #1F3871;
-        background-color: #3A5DAF;
+        border: 3px solid #3A5DAF;
+        background: linear-gradient(to bottom, #3A5DAF 50%, white 50%);
         box-shadow: 2px 10px 10px #23386B;
         border-radius: 100%;
         text-align: center;
@@ -74,11 +76,6 @@ include('header_tpl.php');
         text-align: center;
     }
     
-    #submit1, #submit2{
-        margin-left: 35%;
-        margin-top: 5px;
-        margin-bottom: 10px;
-    }
     #welcome{
         text-align: center;
         margin-top : 2%;
@@ -107,7 +104,7 @@ include('header_tpl.php');
     }
     h2{
       text-align: center;
-      color: #FFCB05;
+      color:black;
       text-shadow: 2px 5px 10px #23386B;  
     }
     .button_select_poke{
@@ -117,28 +114,174 @@ include('header_tpl.php');
         margin:auto;
         border-radius: 5px;
         height: 30px;
-        background-color: #FFCB05;
+        background-color: white;
     }
     #form1 input:focus, #form2 input:focus{
         outline:  none;
-        background-color: #FFCB05;
+        background-color: #F7F7F8;
     }
     #submit1, #submit2 {
         margin:auto;
         margin-top: 10px;
-        background-color: #FFCB05;
+        background-color: red;
         border-radius: 5px;
         height: 30px;
         width:40px;
-        box-shadow: 2px 5px 10px #23386B;
+        box-shadow: 0px 3px 5px #23386B;
     }
-    #submit1:hover,#submit2:hover {
+    #submit1{
+        background-color: #FFFFFF;
+        border: 1px solid black;
+        color:red;
+    }
+    #submit2{
+        background-color: #FFFFFF;
+    }
+    #submit1:hover {
+        background-color: red;
+        color:white;
+    }
+    #submit2:hover{
         background-color: #3A5DAF;
-        border: 1px solid #FFCB05;
-        color: #FFCB05;
+        border: 1px solid #3A5DAF;
+        color: white;
         box-shadow: 0px 0px 5px #23386B;
     }
+    #pocketred{
+        position: absolute;
+        height:200px;
+        width:200px;
+        top:-40%;
+        border-radius: 100px;
+        animation: 0.7s ease-in 0s infinite alternate poketred;
+    }
+    #pocketred img{
+        height: 100%;
+        width:100%;
+    }
+    #blueShadow, #redShadow{
+        background-color: black;
+        opacity: 0.2;
+        position: absolute;
+        z-index:-1;
+        height:200px;
+        width:200px;
+        top:-40%;
+        border-radius: 100px;
+    }
+    #blueShadow{
+        animation: 0.8s ease 0s infinite alternate blue1;
+    }
+    #redShadow{
+        animation: 0.7s ease-in 0s infinite alternate red1;
+    }
+    #pocketblue{
+        position: absolute;
+        height:200px;
+        width:200px;
+        top:-40%;
+        border-radius: 100px;
+        animation: 0.8s ease 0s infinite alternate poketblue;
+    }
+    #pocketblue img{
+        height: 100%;
+        width:100%;
+    }
+    @keyframes poketred {
+        from {
+            top:20%;
+            left:10%;
+            height:200px;
+            border-radius: 100px;
+            }
+
+        90%{
+            height:180px;
+            border-radius: 95px;
+        }
+        to {
+            top:84%;
+            left:10%;
+            height:150px;
+            border-radius:90px;
+        }
+    
+    }
+    @keyframes red1 {
+        from {
+            top:35%;
+            left:12%;
+            height:210px;
+            width:210px;
+            border-radius: 100%;
+            }
+
+        90%{
+            height:180px;
+            width:180px;
+            border-radius: 98%;
+        }
+        to {
+            opacity: 0.6;
+            top:84%;
+            left:11%;
+            height:150px;
+            width:150px;
+            border-radius:95%;
+        }
+    
+    }
+    @keyframes poketblue {
+        from {
+            top:85%;
+            left:80%;
+            height:130px;
+            border-radius: 80px;
+            }
+        10% {
+            height:180px;
+            border-radius: 90px;
+        }
+        to {
+            top:5%;
+            left:80%;
+            height:200px;
+            border-radius:100px;
+        }
+    
+    }
+    @keyframes blue1 {
+        from {
+            opacity: 0.8;
+            top:86%;
+            left:82%;
+            height:100px;
+            width: 100px;
+            border-radius: 80%;
+            }
+        10% {
+            height:150px;
+            width: 150px;
+            border-radius: 80%;
+        }
+        50%{
+            height: 210px;
+            width: 210px;
+        }
+        to {
+            top:25%;
+            left:82%;
+            height:220px;
+            width:220px;
+            border-radius:100%;
+        }
+    
+    }
 </style>
+<div id="pocketred"><img src="views/assets/images/pokeballred.png"></div>
+<div id="pocketblue"><img src="views/assets/images/pokeballblue.png"></div>
+<div id="redShadow"></div>
+<div id="blueShadow"></div>
 <!--Si mode solo sélectionné au rechargement de la page alors affichage du container joueur1-->
 <?php if(isset($_SESSION['random'])): ?>
     <style>#joueur1_container{ display:block; }</style>

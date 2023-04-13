@@ -1,6 +1,6 @@
 <style>
     body{
-        margin-top: 10%;
+        margin-top: 15%;
         text-align: center;
         background-image: url('/views/assets/images/arene.jpg');
         background-repeat: no-repeat ;
@@ -29,18 +29,6 @@
     }
     .greentext{
         color:green;
-    }
-    .feu{
-        color: #EE6B2F;
-    }
-    .eau{
-        color: #30A7D7;
-    }
-    .plante{
-        color:#4DAD5B;
-    }
-    .elecktric{
-        color: #E6BC2F;
     }
 </style>
 <body>

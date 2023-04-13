@@ -6,6 +6,9 @@ if(isset($params['2'])) {
 }
 ?>
 <style>
+    body{
+        background-color: #3A5DAF;
+    }
     #all_combat_container{
         height: 90vh;
         width:100vw;
@@ -14,20 +17,25 @@ if(isset($params['2'])) {
         align-items: center;
     }
     h1{
+        grid-row: 2;
+        grid-column:2;
         text-align: center;
+        text-shadow: 2px 5px 3px #1A2D5F; 
+        color: #C0BB05;
     }
     table {
         border-radius: 10px;
-        border: 2px solid black;
-        background-color: black;
+        border: 2px solid #3A5DAF;
+        background-color: #3A5DAF;
         overflow: hidden;
         border-collapse: collapse;
         font-size: 20px;
         text-align: center;
+        box-shadow: 10px 10px 8px #1A2D5F;
     }
     th, td{
         background-color: white;
-        border: 1px solid black;
+        border: 1px solid #3A5DAF;
         height: 30px;
         width: 200px;
     }
@@ -53,7 +61,7 @@ if(isset($params['2'])) {
     }
 </style>
 <div id='all_combat_container'>
-    <h1>Stats des Combats</h1>
+    <h1>Combats</h1>
     <table>
         <thead>
             <tr>
@@ -85,17 +93,17 @@ if(isset($params['2'])) {
     <?php if(isset($_SESSION['joueur1'])): ?>
     <div id='form_display_combat'>
         <form action="/Combat/displayCombatsById/<?= $_SESSION['id1'] ?>" method="POST">
-            <button class="button_display_combat" type="submit">Stats <?= $_SESSION['joueur1'] ?></button>
+            <button class="button_display_combat" type="submit"><?= $_SESSION['joueur1'] ?></button>
         </form>
         <!-- si joueur 2 connecté affichage du bouton de sélection de ses stats -->
         <?php if(isset($_SESSION['joueur2'])) : ?>
         <form action="/Combat/displayCombatsById/<?= $_SESSION['id2'] ?>" method="POST">
-            <button class="button_display_combat" type="submit">Stats <?= $_SESSION['joueur2'] ?></button>
+            <button class="button_display_combat" type="submit"><?= $_SESSION['joueur2'] ?></button>
         </form>
         <!-- si jeu solo affichage bouton stat ordi -->
         <?php elseif(isset($_SESSION['random'])): ?>
         <form action="/Combat/displayCombatsById/99" method="POST">
-            <button class="button_display_combat" type="submit">Stats Ordi</button>
+            <button class="button_display_combat" type="submit">Ordi</button>
         </form>
         <?php endif; ?>
     </div>
