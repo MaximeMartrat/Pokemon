@@ -72,7 +72,14 @@ class CombatDAO {
 
         $db_connect = connectToDB();
 
-        $statement  = $db_connect->prepare("SELECT Nom, SUM(Score_J1 + Score_J2) AS Score FROM Combats INNER JOIN Joueurs ON Joueurs.Id_Joueur = Combats.Joueur1 OR Joueurs.Id_Joueur = Combats.Joueur2 WHERE Joueur1 = Id_Joueur OR Joueur2 = Id_Joueur GROUP BY Id_Joueur ORDER BY Score DESC LIMIT 3");
+        $statement  = $db_connect->prepare("SELECT Joueurs.Nom,
+        SUM(CASE WHEN Combats.Joueur1 = Joueurs.Id_Joueur THEN Combats.Score_J1 ELSE Combats.Score_J2 END) AS Score
+        FROM Combats
+        INNER JOIN Joueurs ON Joueurs.Id_Joueur = Combats.Joueur1 OR Joueurs.Id_Joueur = Combats.Joueur2
+        WHERE Joueurs.Id_Joueur IN (SELECT DISTINCT Id_Joueur FROM Combats)
+        GROUP BY Joueurs.Id_Joueur
+        ORDER BY Score DESC
+        LIMIT 3");
 
         try {
             $statement->execute();

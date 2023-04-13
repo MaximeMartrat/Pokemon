@@ -20,6 +20,7 @@
         }
         .navigation:hover{
             background-color: #3A5DAF;
+            border: 2px solid #FFCB05;
             color: #FFCB05;
         }
         nav{

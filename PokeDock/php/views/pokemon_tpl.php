@@ -5,6 +5,9 @@ $params = explode('/', $_GET['p']);
 $param = $params['2'];
 ?>
 <style>
+    body{
+        background-color: #3A5DAF;
+    }
     #all_pokemon_container{
         height: 80vh;
         width:100vw;
@@ -16,7 +19,7 @@ $param = $params['2'];
         grid-row: 1;
         grid-column:2;
         text-align: center;
-        color: #3A5DAF;
+        color: #C0BB05;
     }
     #form_div{
         grid-row:2;

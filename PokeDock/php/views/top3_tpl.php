@@ -2,20 +2,25 @@
 include('header_tpl.php');
 ?>
 <style>
+    body{
+        background-color: #3A5DAF;
+    }
     #top3{
         height: 90vh;
         width:100vw;
+        margin-top: 10%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     h1{
         text-align: center;
+        color: #C0BB05;
     }
     table {
         border-radius: 10px;
-        border: 2px solid black;
-        background-color: black;
+        border: 2px solid #3A5DAF;
+        background-color: #3A5DAF;
         overflow: hidden;
         border-collapse: collapse;
         font-size: 20px;
@@ -23,7 +28,7 @@ include('header_tpl.php');
     }
     th, td{
         background-color: white;
-        border: 1px solid black;
+        border: 1px solid #3A5DAF;
         height: 30px;
         width: 200px;
     }

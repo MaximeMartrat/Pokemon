@@ -11,8 +11,12 @@ if($params['2'] == 1) {
 ?>
 
 <style>
+    body{
+        background-color: #3A5DAF;
+    }
     h1{
-    text-align: center;
+        text-align: center;
+        color: #C0BB05;
     }
     #combat_container{
         height: 90vh;
@@ -23,8 +27,8 @@ if($params['2'] == 1) {
     }
     table {
         border-radius: 10px;
-        border: 2px solid black;
-        background-color: black;
+        border: 2px solid #3A5DAF;
+        background-color: #3A5DAF;
         overflow: hidden;
         border-collapse: collapse;
         font-size: 20px;
@@ -32,7 +36,7 @@ if($params['2'] == 1) {
     }
     th, td{
         background-color: white;
-        border: 1px solid black;
+        border: 1px solid #3A5DAF;
         height: 30px;
         width: 200px;
     }
@@ -79,19 +83,20 @@ $totalScoreJ2 = 0;
         <thead>
             <tr>
                 <th>Combat</th>
-                <th>Joueur</th>
-                <th>Pokemon</th>
+                <th>Pokemon joueur</th>
+                <th>Pokemon adversaire</th>
                 <th>Score</th>
 
             </tr>
             </thead>
             <tbody>
+            <?php $count =1 ?>
             <?php foreach($_SESSION['combatsbyid'] as $combat): ?>  
                 <tr>
-                    <td><?= $combat['Id_combat'] ?></td>
+                    <td><?= $count++ ?></td>
                     <?php if($param === $combat['Joueur1']): ?>
-                        <td><?= $combat['joueur1'] ?></td>
                         <td><?= $combat['pokemon1'] ?></td>
+                        <td><?= $combat['pokemon2'] ?></td>
                         <td><?= $combat['Score_J1'] ?></td>
                         <?php 
                             // Ajoutez le score actuel du joueur 1 à la variable totalScoreJ1
@@ -99,8 +104,8 @@ $totalScoreJ2 = 0;
                         ?>
                         
                     <?php else: ?>
-                        <td><?= $combat['joueur2'] ?></td>
                         <td><?= $combat['pokemon2'] ?></td>
+                        <td><?= $combat['pokemon1'] ?></td>
                         <td><?= $combat['Score_J2'] ?></td>
 
                         <?php 

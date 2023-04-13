@@ -40,7 +40,7 @@ class Pokemon {
     private function addPV($gain) {
         //pv = pv + gain
         $this->pv = $this->pv + $gain;
-        echo $this->nom. ' a '. $this->pv. ' PV<br>';
+        echo $this->nom. " a <span class='greentext'>". $this->pv. " PV</span><br>";
 
     }
 
@@ -48,7 +48,7 @@ class Pokemon {
         //si pv + gain ne dépassent pas les pvmax
         if($this->pv + $gain <= $this->pvmax) {
             
-            echo $this->nom. ' boit une potion de '.$gain.' PV <br>';
+            echo $this->nom. " boit une potion de <span class='greentext'>".$gain." PV </span><br>";
             //utilise la methode addPV
             $this->addPV($gain); 
             
@@ -66,7 +66,7 @@ class Pokemon {
         //si methode estvivant est false
         if($this->EstVivant() === FALSE) {
             //pokemon ko
-            echo $this->nom. ' est mort <br> ';
+            echo $this->nom. " est <span class='redtext' id='dead'>mort</span> <br> ";
             
         }
 
@@ -74,12 +74,12 @@ class Pokemon {
 
     public function Attaque($pokemon) {
 
-        echo $this->nom . ' attaque '. $pokemon->nom . '<br>';
         //switch sur le type de pokemon
         switch($this->type)
         {
             //si feu....
             case 'FEU':
+                echo "<span class='feu'>". $this->nom . " </span><span class='redtext'>attaque</span> ". $pokemon->nom . "<br>";
                 //si pokemon attaqué est de type plante
                 if($pokemon->type === 'PLANTE') {
                     //degat = pc*2
@@ -95,6 +95,7 @@ class Pokemon {
                 break;
                 //etc...
             case 'EAU':
+                echo "<span class='eau'>". $this->nom . " </span><span class='redtext'>attaque</span> ". $pokemon->nom . "<br>";
                 if($pokemon->type === 'FEU') {
                     $degats = $this->pc * 2;
                 } elseif ($pokemon->type === 'ELECTRIK') {
@@ -104,6 +105,7 @@ class Pokemon {
                 }
                 break;
             case 'PLANTE':
+                echo "<span class='plante'>". $this->nom . " </span><span class='redtext'>attaque</span> ". $pokemon->nom . "<br>";
                 if($pokemon->type === 'EAU') {
                     $degats = $this->pc * 2;
                 } elseif ($pokemon->type === 'ELECTRIK') {
@@ -113,6 +115,7 @@ class Pokemon {
                 }
                 break;
             default:
+            echo "<span class='elektric'>". $this->nom . " </span><span class='redtext'>attaque</span> ". $pokemon->nom . "<br>";
                 if($pokemon->type === 'EAU') {
                     $degats = $this->pc * 2;
                 } elseif ($pokemon->type === 'FEU') {
@@ -130,7 +133,7 @@ class Pokemon {
             return FALSE;
         }
         //sinon message plus retour true
-        echo $this->nom . ' afflige '.$degats. ' PV de degats à '. $pokemon->nom . '<br>';
+        echo $this->nom . " afflige <span class='redtext'>".$degats. " PV </span>de degats à ". $pokemon->nom . "<br>";
         return TRUE;
      
     }

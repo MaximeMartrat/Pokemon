@@ -116,6 +116,11 @@ include('header_tpl.php');
     #form1 input, #form2 input{
         margin:auto;
         border-radius: 5px;
+        height: 30px;
+        background-color: #FFCB05;
+    }
+    #form1 input:focus, #form2 input:focus{
+        outline:  none;
         background-color: #FFCB05;
     }
     #submit1, #submit2 {
@@ -123,6 +128,8 @@ include('header_tpl.php');
         margin-top: 10px;
         background-color: #FFCB05;
         border-radius: 5px;
+        height: 30px;
+        width:40px;
         box-shadow: 2px 5px 10px #23386B;
     }
     #submit1:hover,#submit2:hover {
@@ -131,7 +138,79 @@ include('header_tpl.php');
         color: #FFCB05;
         box-shadow: 0px 0px 5px #23386B;
     }
+    #pocketred{
+        position: absolute;
+        height:200px;
+        width:200px;
+        top:-40%;
+        border-radius: 100px;
+        animation: 1s linear 1s infinite alternate example1;
+    }
+    #pocketred img{
+        height: 100%;
+        width:100%;
+    }
+    #pocketblue{
+        position: absolute;
+        height:200px;
+        width:200px;
+        top:-40%;
+        border-radius: 100px;
+        animation: 1s linear 1s infinite alternate example2;
+    }
+    #pocketblue img{
+        height: 100%;
+        width:100%;
+    }
+    @keyframes example1 {
+        from {
+            top:1%;
+            left:100px;
+            height:150px;
+            border-radius: 90px;
+            }
+        15%{
+            height:200px;
+            border-radius: 100px;
+        }
+        90%{
+            height:200px;
+            border-radius: 100px;
+        }
+        to {
+            top:80%;
+            left:100px;
+            height:140px;
+            border-radius:90px;
+        }
+    
+    }
+    @keyframes example2 {
+        from {
+            top:79%;
+            left:1200px;
+            height:150px;
+            border-radius: 90px;
+            }
+        15%{
+            height:200px;
+            border-radius: 100px;
+        }
+        90%{
+            height:180px;
+            border-radius: 100px;
+        }
+        to {
+            top:1%;
+            left:1200px;
+            height:130px;
+            border-radius:90px;
+        }
+    
+    }
 </style>
+<div id="pocketred"><img src="views/assets/images/pokeballred.png"></div>
+<div id="pocketblue"><img src="views/assets/images/pokeballblue.png"></div>
 <!--Si mode solo sélectionné au rechargement de la page alors affichage du container joueur1-->
 <?php if(isset($_SESSION['random'])): ?>
     <style>#joueur1_container{ display:block; }</style>

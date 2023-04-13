@@ -24,6 +24,12 @@
         background-color: white;
         color: black;
     }
+    .redtext{
+        color:red;
+    }
+    .greentext{
+        color:green;
+    }
 </style>
 <body>
 <?php
@@ -88,7 +94,7 @@ while ($pokemon1->EstVivant() && $pokemon2->EstVivant()) {
             //pokemon 1 boitpotion
             $pokemon1->BoitPotion(10);
         } else {
-            echo $pokemon1->get('nom'). ' a '. $pokemon1->get('pv'). ' PV<br>';
+            echo $pokemon1->get('nom'). " <span class='greentext'>a ". $pokemon1->get('pv'). " PV</span><br>";
         }
         //timer d'une seconde avant prochaine instance
         sleep(1);
@@ -117,8 +123,8 @@ while ($pokemon1->EstVivant() && $pokemon2->EstVivant()) {
     }
      // Incrémentation du compteur
     $count++; 
-    //si compteur >= 3
-    if ($count >= 3) {
+    //si compteur >= 2
+    if ($count >= 2) {
         // contenu de la page = string vide
         echo '<script>document.body.innerHTML = "";</script>';
         // compteur = 0
