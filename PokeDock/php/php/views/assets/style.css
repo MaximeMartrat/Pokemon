@@ -1,0 +1,10 @@
+#container_form{
+    display:flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+form input {
+    display: block;
+}
+
