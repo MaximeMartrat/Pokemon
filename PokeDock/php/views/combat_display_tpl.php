@@ -11,16 +11,21 @@ if(isset($params['2'])) {
     }
     #all_combat_container{
         height: 90vh;
-        width:100vw;
+        width:99vw;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     h1{
+        margin-top: 5%;
+        grid-row: 2;
+        grid-column:2;
         text-align: center;
+        text-shadow: 2px 5px 3px #1A2D5F; 
         color: #C0BB05;
     }
     table {
+        margin-top:1%;
         border-radius: 10px;
         border: 2px solid #3A5DAF;
         background-color: #3A5DAF;
@@ -28,6 +33,7 @@ if(isset($params['2'])) {
         border-collapse: collapse;
         font-size: 20px;
         text-align: center;
+        box-shadow: 10px 10px 8px #1A2D5F;
     }
     th, td{
         background-color: white;

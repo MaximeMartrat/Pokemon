@@ -1,12 +1,18 @@
 <style>
     body{
-        margin-top: 10%;
+        margin-top: 15%;
         text-align: center;
         background-image: url('/views/assets/images/arene.jpg');
         background-repeat: no-repeat ;
         background-size: cover;
         font-size: 25px;
         color: white;
+    }
+    #battle{
+        margin-top:-10%;
+        height:110px;
+        width:180px;
+
     }
     h1{
         font-size: 40px;
@@ -32,8 +38,9 @@
     }
 </style>
 <body>
+<img id='battle' src="/views/assets/images/bataille.png">
+<div id="arene">
 <?php
-
 //boucle pour recupérer la session pokemon1 et envoi des resultats dans des variables
 foreach($_SESSION['pokemon1'] as $key => $value) {
     switch ($key) {
@@ -149,7 +156,7 @@ if($attaque1 === FALSE) {
 }
 //fin du combat
 ?>
-
+</div>
 </body>
 <!-- formulaire caché pour envoi des scores et des infos du match avec post -->
 <form action="/Combat/recordCombat" method="POST">

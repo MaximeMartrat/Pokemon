@@ -72,7 +72,7 @@ class CombatDAO {
 
         $db_connect = connectToDB();
 
-        $statement  = $db_connect->prepare("SELECT Joueurs.Nom,
+        $statement  = $db_connect->prepare("SELECT Joueurs.Pseudo,
         SUM(CASE WHEN Combats.Joueur1 = Joueurs.Id_Joueur THEN Combats.Score_J1 ELSE Combats.Score_J2 END) AS Score
         FROM Combats
         INNER JOIN Joueurs ON Joueurs.Id_Joueur = Combats.Joueur1 OR Joueurs.Id_Joueur = Combats.Joueur2

@@ -17,6 +17,7 @@
             border: 2px solid #3A5DAF;
             border-radius: 5px;
             text-decoration: none;
+            box-shadow: 5px 5px 8px #1A2D5F;
         }
         .navigation:hover{
             background-color: #3A5DAF;
@@ -25,7 +26,7 @@
         }
         nav{
             margin-top: 50px;
-            margin-left: 50px;
+            margin-left: 38%;
         }
         #container_form{
             display:flex;

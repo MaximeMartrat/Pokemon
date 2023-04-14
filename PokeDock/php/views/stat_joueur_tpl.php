@@ -15,12 +15,16 @@ if($params['2'] == 1) {
         background-color: #3A5DAF;
     }
     h1{
+        grid-row: 2;
+        grid-column:2;
         text-align: center;
+        text-shadow: 2px 5px 3px #1A2D5F; 
         color: #C0BB05;
     }
     #combat_container{
-        height: 90vh;
-        width:100vw;
+        margin-top: 5%;
+        height: 80vh;
+        width:98vw;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -76,7 +80,7 @@ $totalScoreJ2 = 0;
     <?php if(isset($_SESSION['joueur2'])): ?>
         <h1><?= $_SESSION['joueur2'] ?></h1>
     <?php else: ?>
-        <h1>Ordi</h1>
+        <h1>Bot</h1>
     <?php endif; ?>
 <?php endif; ?>
     <table>
@@ -94,7 +98,7 @@ $totalScoreJ2 = 0;
             <?php foreach($_SESSION['combatsbyid'] as $combat): ?>  
                 <tr>
                     <td><?= $count++ ?></td>
-                    <?php if($param === $combat['Joueur1']): ?>
+                    <?php if($param == $combat['Joueur1']): ?>
                         <td><?= $combat['pokemon1'] ?></td>
                         <td><?= $combat['pokemon2'] ?></td>
                         <td><?= $combat['Score_J1'] ?></td>
@@ -121,8 +125,7 @@ $totalScoreJ2 = 0;
                 <tr><td colspan='3'>TOTAL</td><td><?= $totalScoreJ2 ?></td></tr>
             <?php endif; ?>    
             
-            <?php if(isset($_SESSION['joueur1']) && isset($_SESSION['joueur2'])): ?>
-                <?php endif; ?>
+            
             </tbody>
         </table>
         <!-- si joueur1 connecté affichage du bouton des stats du joueur1 avec son nom -->
@@ -139,7 +142,7 @@ $totalScoreJ2 = 0;
             <!-- si session random affichage du bouton des stats de l'ordi -->
             <?php elseif(isset($_SESSION['random'])): ?>
                 <form action="/Combat/displayCombatsById/99" method="POST">
-                    <button class="button_display_combat" type="submit">Stats Ordi</button>
+                    <button class="button_display_combat" type="submit">Stats Bot</button>
                 </form>
             <?php endif; ?>
     </div>

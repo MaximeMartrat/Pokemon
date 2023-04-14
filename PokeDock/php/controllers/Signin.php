@@ -31,7 +31,8 @@ class Signin extends Controller {
         } else {
 
             //! rediriger vers l'acceuil avec un message
-            echo 'Utilisateur inconnu';
+            echo "<h1>UTILISATEUR OU MOT DE PASSE INCONNU</h1><br><br><br>";
+            echo "<h2><a href='/'>ACCUEIL</a></h2>";
 
         }
 

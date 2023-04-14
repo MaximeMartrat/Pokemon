@@ -10,19 +10,19 @@ $param = $params['2'];
     }
     #all_pokemon_container{
         height: 80vh;
-        width:100vw;
         display: grid;
-        grid-template-rows: 10% 80% 10%;
-        grid-template-columns: 10% 80% 10%;
+        grid-template-rows: 10% 20% 60% 10%;
+        grid-template-columns: 20% 60% 20%;
     }
     h1{
-        grid-row: 1;
+        grid-row: 2;
         grid-column:2;
         text-align: center;
+        text-shadow: 2px 5px 3px #1A2D5F; 
         color: #C0BB05;
     }
     #form_div{
-        grid-row:2;
+        grid-row:3;
         grid-column:2;
     }
     table {
@@ -33,6 +33,7 @@ $param = $params['2'];
         border-collapse: collapse;
         font-size: 20px;
         text-align: center;
+        box-shadow: 10px 10px 8px #1A2D5F;
     }
     th, td{
         background-color: white;
@@ -42,6 +43,7 @@ $param = $params['2'];
     }
     .select-pokemon{
         width:200px;
+        height: 100%;
         background-color: white;
         border: 1px solid white;
     }
@@ -71,7 +73,7 @@ $param = $params['2'];
         color: #ED1C24;
     }
     #player_div{
-        grid-row:3;
+        grid-row:4;
         grid-column:2;
         margin:auto;
     }
@@ -133,15 +135,11 @@ $param = $params['2'];
         </form>
     </div>
     <div id="player_div">
-        <!-- si joueur 1 connecté -->
-        <?php if(isset($_SESSION['joueur1'])): ?>
-            <!-- afficher bouton d'affichage de selection de pokemon pour j1 -->
+        <!-- si joueur 2 connecté -->
+        <?php if(isset($_SESSION['joueur2'])) : ?>
+            <!-- afficher bouton d'affichage de selection de pokemon -->                
             <a id='play1' class="player" href="/Accueil/displayAll/1"><?= $_SESSION['joueur1'] ?></a>
-            <!-- si joueur 2 connecté -->
-            <?php if(isset($_SESSION['joueur2'])) : ?>
-                <!-- afficher bouton d'affichage de selection de pokemon pour j2 -->
-                <a id='play2' class="player" href="/Accueil/displayAll/2"><?= $_SESSION['joueur2'] ?></a>
-            <?php endif; ?>
+            <a id='play2' class="player" href="/Accueil/displayAll/2"><?= $_SESSION['joueur2'] ?></a>
         <?php endif; ?>
     </div>
 </div>
