@@ -47,9 +47,14 @@ class Pokemon {
     public function BoitPotion($gain) {
         //si pv + gain ne dépassent pas les pvmax
         if($this->pv + $gain <= $this->pvmax) {
-            
+            $pokemon1 = unserialize($_SESSION['pokemon1']);
+            if($this->nom == $pokemon1->nom){
+                echo "<script>pokemon1_img.setAttribute('class', 'potion')</script>";
+            } else {
+                echo "<script>pokemon2_img.setAttribute('class', 'potion')</script>";
+            }
             echo $this->nom. " boit une potion de <span class='greentext'>".$gain." PV </span><br>";
-            //utilise la methode addPV
+            // utilise la methode addPV
             $this->addPV($gain); 
             
         } else {
@@ -63,11 +68,16 @@ class Pokemon {
     public function subPV($degats) {
         //pv = pv - degats
         $this->pv = $this->pv - $degats;
+        $pokemon1 = unserialize($_SESSION['pokemon1']);
+        if($this->nom == $pokemon1->nom){
+            echo "<script>pokemon1_img.setAttribute('class', 'degat')</script>";
+        } else {
+            echo "<script>pokemon2_img.setAttribute('class', 'degat')</script>";
+        }
         //si methode estvivant est false
         if($this->EstVivant() === FALSE) {
             //pokemon ko
             echo $this->nom. " est <span class='redtext' id='dead'>mort</span> <br> ";
-            
         }
 
     }
@@ -125,7 +135,15 @@ class Pokemon {
                 }
                 break;
         }
+        $pokemon1 = unserialize($_SESSION['pokemon1']);
+        if($this->nom == $pokemon1->nom){
+            echo "<script>pokemon1_img.setAttribute('class', 'attaque1')</script>";
+        } else {
+            echo "<script>pokemon2_img.setAttribute('class', 'attaque2')</script>";
+        }
         //methode subPV sur pokemon attaqué
+        flush();
+        sleep(0.5);
         $pokemon->subPV($degats);
         //si pokemon attaqué est mort
         if($pokemon->EstVivant() === FALSE) {

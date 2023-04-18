@@ -5,6 +5,7 @@
     $param = $params['2'];
 ?>
 <body class='pokemon_body'>
+
     <div class="pokemon_container">
         <!-- si  joueur1 sur la page -->
         <?php if($param == 1):?>
@@ -52,14 +53,17 @@
                     </tbody>
                 </table>
             </form>
-        </div>
-        <div id="player_div">
-            <!-- si joueur 2 connecté -->
-            <?php if(isset($_SESSION['joueur2'])) : ?>
-                <!-- afficher bouton d'affichage de selection de pokemon -->                
-                <a id='play1' class="player" href="/Accueil/displayAll/1"><?= $_SESSION['joueur1'] ?></a>
-                <a id='play2' class="player" href="/Accueil/displayAll/2"><?= $_SESSION['joueur2'] ?></a>
-            <?php endif; ?>
+            <div id="player_div">
+                <!-- si joueur 2 connecté -->
+                <?php if(isset($_SESSION['joueur2'])) : ?>
+                    <!-- afficher bouton d'affichage de selection de pokemon -->                
+                    <a id='play1' class="player" href="/Accueil/displayAll/1"><?= $_SESSION['joueur1'] ?></a>
+                    <a id='play2' class="player" href="/Accueil/displayAll/2"><?= $_SESSION['joueur2'] ?></a>
+                    <?php if(isset($_SESSION['joueur2']) && isset($_SESSION['pokemon1']) && isset($_SESSION['pokemon2'])) :?>
+                        <a id='start_button' class="player" href="/Combat/index">Fight</a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
     <?php
     //si param1
@@ -69,7 +73,7 @@
             //id du pokemon selectionné = variable session idpok1
             $_SESSION['id_pokemon1'] = $_SESSION['Id_Pokemon'];
             //pokemon selectionné = variable de session pok1
-            $_SESSION['pokemon1'] = $_SESSION['pokemon_select'];
+            $_SESSION['pokemon1'] = serialize($_SESSION['pokemon_select']);
         }
     }
     //si param2
@@ -79,11 +83,11 @@
             //id du pokemon selectionné = variable session idpok2
             $_SESSION['id_pokemon2'] = $_SESSION['Id_Pokemon'];
             //pokemon selectionné = variable de session pok2
-            $_SESSION['pokemon2'] = $_SESSION['pokemon_select'];
+            $_SESSION['pokemon2'] = serialize($_SESSION['pokemon_select']);
         }
     }
-?>
-
+    ?>
+</div>
 <script>
     //recupération de la colonne type pour affichage custom
     let types = document.getElementsByClassName('type');
@@ -103,7 +107,7 @@
         }
     }   
 </script>
-</div>
+
 <?php
     include('footer_tpl.php');
 ?>

@@ -20,7 +20,6 @@ class Accueil extends Controller {
         $newPoke->clearStat();
         $results = $newPoke->getAllPokemon();
         $_SESSION['pokemons'] = $results;
-        $this->index('accueil_template');
-
+        $this->index();
     }
 }

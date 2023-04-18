@@ -30,6 +30,9 @@ class Select extends Controller {
 
                 }
             }
+            if((isset($_SESSION['random'])) && (!isset($_SESSION['joueur2']))){
+                $this->select_random();
+            }
             //recupération des resultats dans variables de session
             $_SESSION['pokemons'] = $results;
             $_SESSION['Id_Pokemon'] = $idPokemonSelected;
@@ -46,8 +49,13 @@ class Select extends Controller {
             unset($_SESSION['joueur2']);
             unset($_SESSION['pokemon2']);
         }
+        if(isset($_SESSION['random'])) {
+            unset($_SESSION['random']);
+        }
+
         //envoi des resultats dans une variabled de Session
         $_SESSION['random'] = $results;
+
         echo "<script>window.location.href='/'</script>";
     }
     

@@ -36,7 +36,7 @@ include('header_tpl.php');
             </tr>
             </thead>
             <tbody>
-            <?php $count =1 ?>
+            <?php $count=1 ?>
             <?php foreach($_SESSION['combatsbyid'] as $combat): ?>  
                 <tr>
                     <td><?= $count++ ?></td>
@@ -61,7 +61,7 @@ include('header_tpl.php');
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-            <?php if($play == 1): ?>            
+            <?php if($play === 1): ?>            
                 <tr><td colspan='3'>TOTAL</td><td><?= $totalScoreJ1 ?></td></tr>
             <?php else: ?>    
                 <tr><td colspan='3'>TOTAL</td><td><?= $totalScoreJ2 ?></td></tr>
