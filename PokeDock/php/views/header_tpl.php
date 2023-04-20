@@ -7,8 +7,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link href="../../views/assets/style.css?<?php echo time(); ?>" type="text/css" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/c68e41c693.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" media="all" href="../../views/assets/style.css?ver=1.2"/>
         <title>Pokemon</title>
     </head>
     <nav>
