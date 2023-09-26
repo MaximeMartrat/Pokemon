@@ -3,7 +3,7 @@ include('header_tpl.php');
     $params = explode('/', $_GET['p']);
     //recupération du param 2 pour identifier joueur 1 ou 2 sur la page
     $param = $params['2'];
-    if($params['2'] == 1) {
+    if($params['2'] == $_SESSION['id1']) {
         $play = 1;
     } else {
         $play = 2;
@@ -12,7 +12,7 @@ include('header_tpl.php');
 
 <div id="combat_container">
 <?php 
-    // Initialisez une variable pour stocker la somme des scores des joueurs
+    // Initialisation d'une variable pour stocker la somme des scores des joueurs
     $totalScoreJ1 = 0;
     $totalScoreJ2 = 0;
     //si joueur 1 sur la page afficher son nom
@@ -55,7 +55,7 @@ include('header_tpl.php');
                         <td><?= $combat['Score_J2'] ?></td>
 
                         <?php 
-                            // Ajoutez le score actuel du joueur 1 à la variable totalScoreJ1
+                            // Ajoutez le score actuel du joueur 2 à la variable totalScoreJ2
                             $totalScoreJ2 += $combat['Score_J2'];
                         ?>
                     <?php endif; ?>
@@ -68,6 +68,7 @@ include('header_tpl.php');
             <?php endif; ?>    
             </tbody>
         </table>
+        
         <!-- si joueur1 connecté affichage du bouton des stats du joueur1 avec son nom -->
         <?php if(isset($_SESSION['joueur1'])): ?>
             <div id='form_select_combat_joueur'>
