@@ -42,8 +42,13 @@
                                 <td class="type"><?= $pokemon['Type'] ?></td>
                                 <!-- si la FK d'un pokemon n'est pas null pokemon déja sélectionné -->
                                 <?php if($pokemon['Id_Joueur_Fk'] != NULL): ?>
-                                    <!-- afficher un check à la place du bouton de sélection -->
-                                    <td style="color:red;"><i class="fa-solid fa-check fa-beat"></i></td>    
+                                    <?php if ($pokemon['Id_Joueur_Fk'] == 1): ?>
+                                        <!-- Afficher le check en rouge pour le joueur 1 -->
+                                        <td class="player-check-red"><i class="fa-solid fa-check fa-beat"></i></td>
+                                    <?php elseif ($pokemon['Id_Joueur_Fk'] == 2): ?>
+                                        <!-- Afficher le check en bleu pour le joueur 2 -->
+                                        <td class="player-check-blue"><i class="fa-solid fa-check fa-beat"></i></td>
+                                    <?php endif; ?>    
                                 <?php else: ?>
                                     <!-- sinon afficher le bouton de sélection -->
                                     <td><button class='select-one-pokemon' name='pokemon' value="<?= $pokemon['Nom'] ?>">OK</button></td>

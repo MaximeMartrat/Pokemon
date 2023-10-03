@@ -1,5 +1,4 @@
 <?php
-
 function connectToDB()
 {
     $config = require('config/config.php');
@@ -18,6 +17,5 @@ function connectToDB()
     }
     return $db;
 }
-
 
 

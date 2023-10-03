@@ -11,8 +11,8 @@ class Signin extends Controller {
         
         $newPlayer = new JoueurDAO;
         if ($newPlayer->insert($_POST)) {
-    
-            $this->render('accueil_template');
+            //redirection vers la page accueil
+            echo "<script>window.location.href= '/'</script>" ;
         }
         else {
             echo "Ca n'a pas marché";
@@ -29,11 +29,44 @@ class Signin extends Controller {
             echo "<script>window.location.href= '/'</script>" ;
                 
         } else {
-
-            //! rediriger vers l'acceuil avec un message
-            echo "<h1>UTILISATEUR OU MOT DE PASSE INCONNU</h1><br><br><br>";
-            echo "<h2><a href='/'>ACCUEIL</a></h2>";
-
+            echo "<script>
+                    function allerVersAccueil() {
+                        window.location.href = '/';
+                    }
+                </script>";
+            echo "<style>
+                body{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color:#ED1C24;
+                    font-family: 'Poppins', sans-serif;
+                    height: 100vh;
+                }
+                .error_container {
+                    text-align: center;
+                }
+                .error_message{
+                    color: #FFCB05;
+                    text-shadow: 2px 5px 3px #1A2D5F;
+                }
+                button{
+                    width: 150px;
+                    font-size: 18px;
+                    padding: 10px;
+                    background-color: #FFCB05;
+                    color:black;
+                    border: 2px solid #ED1C24;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    box-shadow: 5px 5px 8px #1A2D5F;
+                }
+                button:hover{
+                    background-color: #ED1C24;
+                    border: 2px solid #FFCB05;
+                    color: #FFCB05;
+                }
+            </style>";
         }
 
     }

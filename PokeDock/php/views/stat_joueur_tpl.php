@@ -15,6 +15,8 @@ include('header_tpl.php');
     // Initialisation d'une variable pour stocker la somme des scores des joueurs
     $totalScoreJ1 = 0;
     $totalScoreJ2 = 0;
+    $totalCombatsJ1 = 0;
+    $totalCombatsJ2 = 0;
     //si joueur 1 sur la page afficher son nom
     if($play == 1): ?>
         <h1><?= $_SESSION['joueur1'] ?></h1>
@@ -32,7 +34,7 @@ include('header_tpl.php');
                 <th>Combat</th>
                 <th>Pokemon joueur</th>
                 <th>Pokemon adversaire</th>
-                <th>Score</th>
+                <th>Resultats</th>
             </tr>
             </thead>
             <tbody>
@@ -47,6 +49,7 @@ include('header_tpl.php');
                         <?php 
                             // Ajoutez le score actuel du joueur 1 à la variable totalScoreJ1
                             $totalScoreJ1 += $combat['Score_J1'];
+                            $totalCombatsJ1++;
                         ?>
                         
                     <?php else: ?>
@@ -57,14 +60,30 @@ include('header_tpl.php');
                         <?php 
                             // Ajoutez le score actuel du joueur 2 à la variable totalScoreJ2
                             $totalScoreJ2 += $combat['Score_J2'];
+                            $totalCombatsJ2++;
                         ?>
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
+
             <?php if($play === 1): ?>            
-                <tr><td colspan='3'>TOTAL</td><td><?= $totalScoreJ1 ?></td></tr>
-            <?php else: ?>    
-                <tr><td colspan='3'>TOTAL</td><td><?= $totalScoreJ2 ?></td></tr>
+                 <tr>
+                    <td colspan='3'>TOTAL VICTOIRES</td>
+                    <td><?= $totalScoreJ1 ?></td>
+                </tr>
+                <tr>
+                    <td colspan='3'>MOYENNE (%)</td>
+                    <td><?= $totalCombatsJ1 > 0 ? intval(($totalScoreJ1 / $totalCombatsJ1) * 100) . '%' : 'N/A' ?></td>
+                </tr>
+            <?php else : ?>
+                <tr>
+                    <td colspan='3'>TOTAL VICTOIRES</td>
+                    <td><?= $totalScoreJ2 ?></td>
+                </tr>
+                <tr>
+                    <td colspan='3'>MOYENNE (%)</td>
+                    <td><?= $totalCombatsJ2 > 0 ? intval(($totalScoreJ2 / $totalCombatsJ2) * 100) . '%' : 'N/A' ?></td>
+                </tr>
             <?php endif; ?>    
             </tbody>
         </table>

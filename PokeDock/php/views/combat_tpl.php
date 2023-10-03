@@ -311,7 +311,7 @@
             //pokemon 1 a gagné
             echo "<h1>". $pokemon1->get('nom') . " a gagné !</h1>";
             // recupération des scores dans variables de session
-            $_SESSION['score1'] = 3;
+            $_SESSION['score1'] = 1;
             $_SESSION['score2'] = 0;
             ?>
             <script>pokemon2_img.style.display="none"</script>
@@ -322,7 +322,7 @@
             //sinon pokemon2 a gagné
             echo "<h1>" . $pokemon2->get('nom') . " a gagné !</h1>";
             //récupération des scores dans variable de session
-            $_SESSION['score2'] = 3;
+            $_SESSION['score2'] = 1;
             $_SESSION['score1'] = 0;
             ?>
             <script>pokemon1_img.style.display="none"</script>

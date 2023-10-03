@@ -34,11 +34,15 @@ class JoueurDAO {
         $password = $params['password'];
         $password = hash('sha256', $password);
         $statement = $db_connect->prepare("SELECT * FROM Joueurs WHERE `pseudo` = :pseudo");
+        
+        $errorMessage = ''; // Variable pour stocker le message d'erreur
+        $errorDisplayed = false; // Variable de drapeau pour suivre si le message d'erreur a déjà été affiché
+
         try {
             $statement->bindParam(':pseudo', $pseudo);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
-            // var_dump($result);
+            
             //si pseudos correspondent et si password correspondent
             if($result['Pseudo'] == $pseudo) {
                 if($result['Password'] == $password) {
@@ -48,7 +52,6 @@ class JoueurDAO {
                         $_SESSION['joueur1'] = $pseudo;
                         $_SESSION['password1'] = $password;
                         $_SESSION['id1'] = $result['Id_Joueur'];
-
                     }
                     //si post du form2
                     if(isset($_POST['submit2'])) {
@@ -56,23 +59,34 @@ class JoueurDAO {
                         $_SESSION['joueur2'] = $pseudo;
                         $_SESSION['password2'] = $password;
                         $_SESSION['id2'] = $result['Id_Joueur'];
-                       
                     } 
-                //echo $_SESSION['joueur1']. '<br>';  
-                //echo $_SESSION['joueur2'].'<br>';
                     return TRUE;
                 } else {
-                    echo 'mot de passe inconnu'; 
-                    return FALSE;
+                    if (!$errorDisplayed) {
+                        $errorMessage = 'MOT DE PASSE INCONNU';
+                        $errorDisplayed = true;
+                    }
                 }
             } else {
-                echo 'utilisateur inconnu';
-                return FALSE;
+                if (!$errorDisplayed) {
+                    $errorMessage = 'UTILISATEUR INCONNU';
+                }
             }
         } catch (PDOException $e){
             echo "Erreur : ".$e->getMessage();
             return FALSE;
         }
+    
+        // Affichez le message d'erreur une seule fois ici
+        if (!empty($errorMessage)) {
+            echo '<div class="error_container">';
+            echo '<h1 class="error_message">' . $errorMessage . '</h1><br><br><br>';
+            echo '<h2><button onclick="allerVersAccueil()">ACCUEIL</button></h2>';
+            echo '</div>';
+        }
+    
+        return FALSE; // Retourne FALSE après avoir affiché le message d'erreur
     }
+    
 
 }

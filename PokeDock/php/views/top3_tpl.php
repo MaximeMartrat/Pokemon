@@ -13,7 +13,8 @@ include('header_tpl.php');
             <tr>
                 <th>Place</th>
                 <th>Joueur</th>
-                <th>Score</th>
+                <th>Score Total</th>
+                <th>Moyenne</th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@ include('header_tpl.php');
                     <td><?php echo $count++; ?></td>
                     <td><?= $combat['Pseudo'] ?></td>
                     <td><?= $combat['Score'] ?></td>
+                    <td><?= number_format($combat['AverageScore'] * 100) ?>%</td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

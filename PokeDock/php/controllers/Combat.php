@@ -45,7 +45,7 @@ class Combat extends Controller {
     public function displayTop() {
 
         $newCombat = new CombatDAO;
-        $results = $newCombat->getTopScore();
+        $results = $newCombat->getTopAverageScore();
         $_SESSION['topScore'] = $results;
         $this->render('top3_tpl');
 

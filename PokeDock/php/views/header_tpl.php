@@ -11,14 +11,28 @@
         <script src="https://kit.fontawesome.com/c68e41c693.js" crossorigin="anonymous"></script>
         <title>Pokemon</title>
     </head>
-    <nav>
-        <a class="navigation" href="/Signin">Inscription</a>
-        <a class="navigation" href="/Signin/deconnect">Deconnexion</a>
-        <a class="navigation" href="/">Accueil</a>
-        <a class="navigation" href="/Combat/displayCombats">Stats</a>
-        <a class="navigation" href="/Combat/displayTop">Top3</a>
+    <nav class="navigation">
+        <button class="redirection" data-page="/">ACCUEIL</button>
+        <button class="redirection" data-page="/Combat/displayCombats">STATS</button>
+        <button class="redirection" data-page="/Combat/displayTop">TOP3</button>
+        <button class="redirection" data-page="/Signin">INSCRIPTION</button>
+        <button class="redirection" data-page="/Signin/deconnect">DECONNEXION</button>
     </nav>
+    <script>
+        // Sélectionnez tous les boutons avec la classe "redirection-button"
+        const buttons = document.querySelectorAll('.redirection');
 
+        // Ajoutez un gestionnaire d'événement à chaque bouton
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Récupérez la valeur de l'attribut "data-page" du bouton
+                const page = button.getAttribute('data-page');
+                
+                // Redirigez l'utilisateur vers la page correspondante
+                window.location.href = `${page}`;
+            });
+        });
+    </script>
 
 
     

@@ -1,32 +1,40 @@
 <?php
+
 $params = explode('/', $_GET['p']);
-// var_dump($params);
-// echo "<br>";
-// !router à revoir avec un Switch Case !
 
-if ($params[0]) {
-    $controller = ucfirst($params[0]);
-} else {
-    $controller = 'Accueil';
-}
-if (@$params[1]) {
-    $method = $params[1];
-} else {
-    $method = 'index';
-}
-if (@$params[2]) {
-    $req = $params[2];
-} else {
-    $req = '';
-}
+try {
+    if ($params[0]) {
+        $controller = ucfirst($params[0]);
+    } else {
+        $controller = 'Accueil';
+    }
 
+    if (@$params[1]) {
+        $method = $params[1];
+    } else {
+        $method = 'index';
+    }
 
-$called = 'controllers/' . $controller . '.php';
-require($called);
+    if (@$params[2]) {
+        $req = $params[2];
+    } else {
+        $req = '';
+    }
 
-if (method_exists($controller, $method)) {
+    $called = 'controllers/' . $controller . '.php';
+
+    if (!file_exists($called)) {
+        throw new Exception('Controller file not found');
+    }
+
+    require($called);
+
+    if (!class_exists($controller) || !method_exists($controller, $method)) {
+        throw new Exception('Method ' . $controller . '::' . $method . '() does not exist');
+    }
+
     $myctrl = new $controller();
     $myctrl->$method($req);
-} else {
-    echo 'Method ' . $controller . '::' . $method . '() does not exist';
+} catch (Exception $e) {
+    echo 'An error occurred: ' . $e->getMessage();
 }

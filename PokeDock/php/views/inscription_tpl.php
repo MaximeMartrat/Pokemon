@@ -17,6 +17,7 @@ include('header_tpl.php');
             <button id="valid_inscription" type='submit'>OK</button>
         </form>  
     </div>
+    
 <?php
 include('footer_tpl.php');
 ?>

@@ -1,6 +1,10 @@
 <?php 
 // par défault à 0 
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
+
+// Redirige les erreurs vers le journal d'erreurs
+ini_set('log_errors', 1);
+ini_set('error_log', 'php_errors.log'); // Spécifie le nom du fichier journal
 
 // renvoi toutes les erreurs
 ini_set('error_reporting', E_ALL);
