@@ -1,2 +1,2 @@
 .config
-../docker-compose.yml
+PokeDock\docker-compose.yml
