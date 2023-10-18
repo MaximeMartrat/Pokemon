@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="electrik-container-right">
+      <img
+        src="assets/images/lightning-right.png"
+        alt="electrik"
+        id="electrik-right"
+      />
+    </div>
+    <style>
+      body {
+        background-color: black;
+      }
+      #electrik-container-right {
+        opacity: 0;
+        position: absolute;
+        left: 15%;
+        height: 800px;
+        width: 1200px;
+        animation: 1s linear 1s electrik2;
+      }
+      #electrik-right {
+        height: 100%;
+        width: 100%;
+      }
+      @keyframes electrik2 {
+        from {
+          opacity: 1;
+          z-index: 0;
+        }
+        10% {
+          opacity: 0.5;
+        }
+        25% {
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 0;
+        }
+        75% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 0.2;
+        }
+        to {
+          z-index: 1;
+          opacity: 0.9;
+        }
+      }
+    </style>
+  </body>
+</html>

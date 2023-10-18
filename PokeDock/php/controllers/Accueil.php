@@ -15,7 +15,6 @@ class Accueil extends Controller {
     }
 
     public function clearStatPockemon() {
-
         $newPoke = new PokemonDAO;
         $newPoke->clearStat();
         $results = $newPoke->getAllPokemon();

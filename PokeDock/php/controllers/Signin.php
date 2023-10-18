@@ -9,10 +9,17 @@ class Signin extends Controller {
 
     public function record() {
         
+        $pseudo = $_POST['pseudo'];
+
         $newPlayer = new JoueurDAO;
+        if ($newPlayer->checkPseudo($pseudo)) {
+            $this->render('erreur_pseudo_tpl', ['pseudo' => $pseudo]);
+            return false;
+        }
+        
         if ($newPlayer->insert($_POST)) {
             //redirection vers la page accueil
-            echo "<script>window.location.href= '/'</script>" ;
+            $this->render('enregistrement_tpl', ['pseudo' => $pseudo]);
         }
         else {
             echo "Ca n'a pas marché";
@@ -26,45 +33,68 @@ class Signin extends Controller {
 
         if($checkJoueur->verify($_POST)) {
             //redirection vers la page accueil
+            
             echo "<script>window.location.href= '/'</script>" ;
                 
         } else {
             echo "<script>
                     function allerVersAccueil() {
-                        window.location.href = '/';
+                        window.history.back();
                     }
+                    window.addEventListener('load', function() {
+                        const errorContainer = document.querySelector('.error_container');
+                        errorContainer.classList.add('show');
+                      });                      
                 </script>";
             echo "<style>
                 body{
                     display: flex;
                     justify-content: center;
-                    align-items: center;
-                    background-color:#ED1C24;
+                    align-items: flex-start;
                     font-family: 'Poppins', sans-serif;
                     height: 100vh;
+                    width: 100vw;
+                    z-index: -1;
+                    background-image: url('../views/assets/images/Pokemon-Sleep.gif');
+                    background-size: cover;
+                    overflow: hidden;
                 }
                 .error_container {
                     text-align: center;
+                    position: relative;
+                    color: #058a8e;
+                    padding: 60px;
+                    border-radius: 100%;
+                    background-color: #d5e5e3;
+                    text-shadow: 2px 3px 3px #1A2D5F;
+                    position: relative;
+                    top: 1%;
+                    opacity: 0;
+                    transition: opacity 2s ease-in-out;
+                }
+                .error_container.show {
+                    opacity: 1;
                 }
                 .error_message{
-                    color: #FFCB05;
-                    text-shadow: 2px 5px 3px #1A2D5F;
+                    color: #058a8e;
+                    text-shadow: 2px 3px 3px #1A2D5F;
                 }
                 button{
-                    width: 150px;
-                    font-size: 18px;
+                    font-size: 50px;
                     padding: 10px;
-                    background-color: #FFCB05;
-                    color:black;
-                    border: 2px solid #ED1C24;
+                    background-color: #058a8e;
+                    color: #f6e9bc;
+                    border: 2px solid #058a8e;
                     border-radius: 5px;
                     text-decoration: none;
                     box-shadow: 5px 5px 8px #1A2D5F;
+                    position: relative;
+                    top: -10px;
                 }
                 button:hover{
-                    background-color: #ED1C24;
-                    border: 2px solid #FFCB05;
-                    color: #FFCB05;
+                    background-color: #f6e9bc;
+                    border: 2px solid #058a8e;
+                    color: #058a8e;
                 }
             </style>";
         }

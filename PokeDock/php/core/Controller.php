@@ -8,8 +8,9 @@ abstract class Controller {
         $this->vars = array_merge($this->vars , $data );
     }
 
-    public function render($filename){
+    public function render($filename, $additionalData = []){
         extract($this->vars);
+        extract($additionalData);
         require(ROOT.'views/'.$filename.'.php');
     }
 

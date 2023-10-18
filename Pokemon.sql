@@ -105,7 +105,7 @@ CREATE TABLE `Pokemons` (
 --
 
 INSERT INTO `Pokemons` (`Id_pokemon`, `Nom`, `PV`, `Pvmax`, `PC`, `Type`, `Id_Joueur_Fk`) VALUES
-(1, 'Salamèche', 200, 200, 40, 'FEU', NULL),
+(1, 'Salameche', 200, 200, 40, 'FEU', NULL),
 (2, 'Feunard', 150, 150, 50, 'FEU', NULL),
 (3, 'Magmar', 250, 250, 30, 'FEU', NULL),
 (4, 'Poussifeu', 120, 120, 55, 'FEU', NULL),

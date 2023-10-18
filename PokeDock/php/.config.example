@@ -1,0 +1,8 @@
+<?php
+return [
+    'db_host' => 'nom hote',
+    'db_user' => 'nom utilisateur',
+    'db_pass' => 'mot de passe',
+    'db_name' => 'nom bdd',
+];
+?>

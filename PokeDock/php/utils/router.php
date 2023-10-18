@@ -20,7 +20,7 @@ try {
     } else {
         $req = '';
     }
-
+    
     $called = 'controllers/' . $controller . '.php';
 
     if (!file_exists($called)) {

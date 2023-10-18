@@ -39,7 +39,6 @@ class Combat extends Controller {
         $results = $newCombat->getCombatById($id);
         $_SESSION['combatsbyid'] = $results;
         $this->render('stat_joueur_tpl');
-
     }
 
     public function displayTop() {

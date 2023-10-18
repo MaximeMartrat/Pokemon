@@ -1,8 +1,8 @@
 <?php
+
 function connectToDB()
 {
-    $config = require('config/config.php');
-
+    $config = require('.config');
 
     $host = $config['db_host'];
     $user = $config['db_user'];
@@ -17,5 +17,3 @@ function connectToDB()
     }
     return $db;
 }
-
-
